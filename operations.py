@@ -6,6 +6,7 @@ class OPERATION(enum.Enum):
     multiplication = 3
     division = 4
     exponentation = 5  # potegowanie
-    negation = 6 #negowanie
+    negation = 6  # negowanie
+    root = 7  # pierwiastek
+    combination = 8  # kombinacja
     factorial = 9  # silnia
-    SEND_ID_TRIES = 6

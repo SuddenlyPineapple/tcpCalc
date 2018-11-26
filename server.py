@@ -1,6 +1,6 @@
+import _thread
 import socket
 import sys
-from concurrent.futures import thread
 from segment import Segment
 
 
@@ -9,7 +9,7 @@ class Server:
         self.addr = addr
         print("Initialize Server Program!")
 
-    def newClient(self, connection, client_address, port, clients, secret_number, tries, client_nr):
+    def newClient(self, connection, client_address, port):
         print("New Client: thread created")
 
         try:
@@ -18,8 +18,7 @@ class Server:
             # Receive the data in small chunks and retransmit it
             while True:
                 data = connection.recv()
-                # unpacked_data = unpacker.unpack(data)
-                # print "Data len:",len(data)
+                unpacked_data = Segment.unpack(data)
 
                 if len(data) != 0:
                     message = self.unpack(data)
@@ -60,4 +59,4 @@ class Server:
             # Wait for a connection
             print('Waiting for a connection')
             connection, (client_address, port) = sock.accept()
-            # thread.start_new_thread(self.newClient, (connection, client_address, port))
+            _thread.start_new_thread(self.newClient, (connection, client_address, port))

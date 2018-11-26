@@ -22,11 +22,19 @@ optional arguments:
 
 <pre>
 OPERATION TYPE  |  Status  |  ID token  |  Timestamp  |   NumberA   |   NumberB   |   Result
-#1:O=___          #2:S=___    #3:I=___      #4:T=___      #5:A=___      #6:B=___     #7:R=___
-
+#1:O=___+         #2:S=___+   #3:I=___+    #4:T=___+      #5:A=___+     #6:B=___+     #7:R=___+
 </pre>
 
-OPERATION TYPES (OPERTION FLAG - BINARY NUMBER AS DECIMAL - DESCRIPTION):
+OPERATION TYPES (ex. if #1:O=1, then operation between numberA and numberB is addition):
 <ul>
-    <li></li>
+    <li>addition = 1</li>
+    <li>substraction = 2</li>
+    <li>multiplication = 3</li>
+    <li>division = 4</li>
+    <li>exponentation = 5</li>
+    <li>negation = 6</li>
+    <li>root = 7</li>
+    <li>combination = 8</li>
+    <li>factorial = 9</li>
+
 </ul>

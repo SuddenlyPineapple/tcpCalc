@@ -1,5 +1,7 @@
 import socket
 import sys
+
+from operations import OPERATION
 from segment import Segment
 
 
@@ -22,7 +24,7 @@ class Client:
         # Zmienne Clienta
 
         try:
-            print()
+            print(Segment(OPERATION.addition, "wynik", 123, 123, -123, " ").pack())
 
         finally:
             print(sys.stderr, 'closing socket')
