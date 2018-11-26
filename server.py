@@ -1,6 +1,7 @@
 import _thread
 import socket
-import sys
+
+from operations import OPERATION
 from segment import Segment
 
 
@@ -18,21 +19,19 @@ class Server:
             # Receive the data in small chunks and retransmit it
             while True:
                 data = connection.recv(4096)
-                unpacked_data = Segment.unpack(data)
-                unpacked_data.print()
-                # if len(data) != 0:
-                #     message = self.unpack(data)
-                #     # print(message)
-                #
-                #     print('Received: ' + str(message))
-                #     action = message[0]
-                #     answer = message[1]
-                #     token = message[2]
-                #
-                #     if action == "Something":
-                #         print("Test")
-                #     else:
-                #         print('Error: Bad flags settings!')
+
+
+                if len(data) != 0:
+                    message = Segment.unpack(data)
+                    message.print()
+                    print(message)
+
+                    print('Received: ' + str(data))
+
+                    if message.operation == OPERATION.addition:
+                        print("Test")
+                    else:
+                        print('Error: Bad flags settings!')
 
                     # break
 
