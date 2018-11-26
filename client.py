@@ -18,14 +18,14 @@ class Client:
 
         # Connect the socket to the port where the server is listening
         server_address = (self.addr, 8000)
-        print(sys.stderr, 'connecting to %s port %s' % server_address)
+        print('Connecting to %s port %s' % server_address)
         sock.connect(server_address)
 
         # Zmienne Clienta
 
         try:
-            print(Segment(OPERATION.addition, "wynik", 123, 123, -123, " ").pack())
+            sock.sendall(Segment(OPERATION.addition, "wynik", 1, 123, -123, "").pack())
 
         finally:
-            print(sys.stderr, 'closing socket')
+            print('Closing socket')
             sock.close()

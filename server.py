@@ -17,22 +17,22 @@ class Server:
 
             # Receive the data in small chunks and retransmit it
             while True:
-                data = connection.recv()
+                data = connection.recv(4096)
                 unpacked_data = Segment.unpack(data)
-
-                if len(data) != 0:
-                    message = self.unpack(data)
-                    # print(message)
-
-                    print('Received: ' + str(message))
-                    action = message[0]
-                    answer = message[1]
-                    token = message[2]
-
-                    if action == "Something":
-                        print("Test")
-                    else:
-                        print('Error: Bad flags settings!')
+                unpacked_data.print()
+                # if len(data) != 0:
+                #     message = self.unpack(data)
+                #     # print(message)
+                #
+                #     print('Received: ' + str(message))
+                #     action = message[0]
+                #     answer = message[1]
+                #     token = message[2]
+                #
+                #     if action == "Something":
+                #         print("Test")
+                #     else:
+                #         print('Error: Bad flags settings!')
 
                     # break
 
@@ -48,7 +48,7 @@ class Server:
 
         # Bind the socket to the port
         server_address = (self.addr, 8000)
-        print(sys.stderr, 'Starting up on %s port %s' % server_address)
+        print('Starting up on %s port %s' % server_address)
         sock.bind(server_address)
 
         # Listen for incoming connections
