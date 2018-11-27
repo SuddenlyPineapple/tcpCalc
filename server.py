@@ -24,7 +24,6 @@ class Server:
                 if len(data) != 0:
                     message = Segment.unpack(data)
                     message.print()
-                    print(message)
 
                     print('Received: ' + str(data))
 

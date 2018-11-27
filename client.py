@@ -1,5 +1,5 @@
 import socket
-import sys
+import time
 
 from operations import OPERATION
 from segment import Segment
@@ -63,7 +63,7 @@ class Client:
                 if number2 is not int or number2 is not float:
                     error = True
         try:
-            sock.sendall(Segment(OPERATION.addition, "wynik", 1, 123, -123, "").pack())
+            sock.sendall(Segment(OPERATION.addition, "wynik", 1, time.time(), 123, -123, "").pack())
 
         finally:
             print('Closing socket')
