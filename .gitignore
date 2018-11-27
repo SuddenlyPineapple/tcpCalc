@@ -1,8 +1,6 @@
 *.xml
-*.xml
 .idea/libraries/R_User_Library.xml
 .idea/tcpCalc.iml
-.idea/vcs.xml
 .idea/vcs.xml
 .idea/*
 __pycache__/*

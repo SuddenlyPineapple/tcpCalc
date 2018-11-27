@@ -23,15 +23,13 @@ class Client:
 
         # Zmienne Clienta
 
-        error = False
-        number1 = 'abc'
-        while number1 is str:
-            if error:
-                number1 = input('It is not a number! Please choose the number: ')
-            else:
-                number1 = input("Choose the first number: ")
-                if number1 is str:
-                    error = True
+        while True:
+            try:
+                number1 = int(input("Enter Number:"))
+                assert (number1 < 2147483647 or number1 > -2147483648), 'Number must be in int range'
+                break
+            except:
+                print("This is a string")
 
         error = False
         oper = 0
