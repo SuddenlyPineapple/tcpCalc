@@ -5,7 +5,7 @@ class OPERATION(enum.Enum):
     subtraction = 2
     multiplication = 3
     division = 4
-    exponentation = 5  # potegowanie
+    exponentiation = 5  # potegowanie
     negation = 6  # negowanie
     root = 7  # pierwiastek
     combination = 8  # kombinacja
