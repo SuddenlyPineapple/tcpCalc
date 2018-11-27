@@ -2,7 +2,7 @@ import enum
 
 class OPERATION(enum.Enum):
     addition = 1
-    substraction = 2
+    subtraction = 2
     multiplication = 3
     division = 4
     exponentation = 5  # potegowanie
