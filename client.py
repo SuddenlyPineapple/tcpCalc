@@ -23,6 +23,7 @@ class Client:
 
         # Zmienne Clienta
         ops = ("addition", "subtraction", "multiplication", "division", "exponentiation", "negation", "root", "combination", "factorial")
+        ops2 = ("addition", "subtraction", "multiplication", "division", "exponentiation", "root", "combination")
         while True:
             try:
                 print('Operations: ')
@@ -49,10 +50,10 @@ class Client:
             except:
                 print("This is a string!")
 
-        if op is not ('negation' or 'factorial'):
+        if op in ops2:
             while True:
                 try:
-                    number2 = int(input("Enter second number!:"))
+                    number2 = int(input("Enter second number:"))
                     assert (number2 < 2147483647 or number2 > -2147483648), 'Number must be in int range'
                     break
                 except:
