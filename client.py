@@ -59,7 +59,12 @@ class Client:
                 except:
                     print("This is a string")
         try:
-            sock.sendall(Segment(OPERATION.addition, "wynik", 1, time.time(), 123, -123, "").pack())
+            sock.sendall(Segment(OPERATION(op), True, 0, time.time(), number1, number2, "").pack())
+            while True:
+                data = sock.recv(4096)
+                if len(data) != 0:
+                    message = Segment.unpack(data)
+                    message.print()
 
         finally:
             print('Closing socket')

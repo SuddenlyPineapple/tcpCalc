@@ -25,43 +25,70 @@ class Server:
 
                 if len(data) != 0:
                     message = Segment.unpack(data)
-                    message.print()
-
+                    #message.print()
                     print('Received: ' + str(data))
+
                     token = message.id
-                    numberA = message.numberA
-                    numberB = message.numberB
+                    numberA = int(message.numberA)
+                    numberB = int(message.numberB)
 
                     if message.operation == OPERATION.id:
                         token = random.randint(100, 1000)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), "", "", ""))
+                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), "", "", "").pack())
                     elif message.operation == OPERATION.addition:
                         result = functions.addition(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.addition, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.addition, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.subtraction:
                         result = functions.subtraction(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.subtraction, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.subtraction, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.multiplication:
                         result = functions.multiplication(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.multiplication, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.multiplication, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.division:
                         result = functions.division(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.division, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.division, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.exponentiation:
                         result = functions.exponentiation(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.exponentiation, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.exponentiation, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.negation:
                         result = functions.negation(numberA)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.negation, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.negation, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.root:
                         result = functions.root(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.root, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.root, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.combination:
                         result = functions.combination(numberA, numberB)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.combination, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.combination, True, token, time.time(), 0, 0, result).pack())
                     elif message.operation == OPERATION.factorial:
                         result = functions.factorial(numberA)
-                        connection.sendall(Segment(OPERATION.id, True, token, time.time(), 0, 0, result))
+                        if result > 2147483647 or result < -2147483648:
+                            connection.sendall(Segment(OPERATION.factorial, False, token, time.time(), 0, 0, 0).pack())
+                        else:
+                            connection.sendall(Segment(OPERATION.factorial, True, token, time.time(), 0, 0, result).pack())
                     else:
                         print('Error occured: Wizard must be stopped!')
 
