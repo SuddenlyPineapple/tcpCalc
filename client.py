@@ -22,21 +22,9 @@ class Client:
         sock.connect(server_address)
 
         # Zmienne Clienta
-
+        ops = ("addition", "subtraction", "multiplication", "division", "exponentiation", "negation", "root", "combination", "factorial")
         while True:
             try:
-                number1 = int(input("Enter Number:"))
-                assert (number1 < 2147483647 or number1 > -2147483648), 'Number must be in int range'
-                break
-            except:
-                print("This is a string")
-
-        error = False
-        oper = 0
-        while oper is not 'addition'or oper is not 'subtraction'or oper is not 'multiplication'or oper is not 'division'or oper is not 'exponentiation'or oper is not 'negation'or oper is not 'root'or oper is not 'combination'or oper is not 'factorial':
-            if error:
-                oper = input('It is not an operation! Please choose one: ')
-            else:
                 print('Operations: ')
                 print('addition -dodawanie')
                 print('subtraction -odejmowanie')
@@ -44,22 +32,31 @@ class Client:
                 print('division -dzielenie')
                 print('exponentiation -potegowanie')
                 print('negation -negowanie')
-                print('root -pierwiaskowanie')
+                print('root -pierwiastkowanie')
                 print('combination -kombinacja')
                 print('factorial -silnia')
-                oper = input("Choose the operation: ")
-                if oper is not 'addition'or oper is not 'subtraction'or oper is not 'multiplication'or oper is not 'division'or oper is not 'exponentiation'or oper is not 'negation'or oper is not 'root'or oper is not 'combination'or oper is not 'factorial':
-                    error = True
+                op = str(input("Choose the operation: "))
+                assert(op in ops)
+                break
+            except:
+                print("Operation not found!")
 
-        error = False
-        number2 = 'abc'
-        while number2 is str:
-            if error:
-                number2 = input('It is not a number! Please choose the number: ')
-            else:
-                number2 = input("Choose the first number: ")
-                if number2 is str:
-                    error = True
+        while True:
+            try:
+                number1 = int(input("Enter first number:"))
+                assert (number1 < 2147483647 or number1 > -2147483648), 'Number must be in int range'
+                break
+            except:
+                print("This is a string!")
+
+        if op is not ('negation' or 'factorial'):
+            while True:
+                try:
+                    number2 = int(input("Enter second number!:"))
+                    assert (number2 < 2147483647 or number2 > -2147483648), 'Number must be in int range'
+                    break
+                except:
+                    print("This is a string")
         try:
             sock.sendall(Segment(OPERATION.addition, "wynik", 1, time.time(), 123, -123, "").pack())
 
