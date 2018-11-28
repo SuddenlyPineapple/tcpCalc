@@ -1,4 +1,7 @@
+import datetime
 import math
+import time
+
 
 def addition(number1, number2):
     number1 += number2
@@ -35,3 +38,6 @@ def combination(number1, number2):
 def factorial(number1):
     number1 = math.factorial(int(round(number1)))
     return round(number1, 4)
+
+def timePrintout():
+    return datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S %Y-%m-%d')

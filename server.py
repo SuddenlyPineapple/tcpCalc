@@ -4,6 +4,7 @@ import socket
 import time
 import functions
 
+from functions import timePrintout
 from operations import OPERATION
 from segment import Segment
 
@@ -11,13 +12,13 @@ from segment import Segment
 class Server:
     def __init__(self, addr):
         self.addr = addr
-        print("Initialize Server Program!")
+        print(timePrintout() + "  Initialize Server Program!")
 
     def newClient(self, connection, client_address, port):
-        print("New Client: thread created")
+        print(timePrintout() + "  New Client: thread created")
 
         try:
-            print('Connection from', client_address, ":", port)
+            print(timePrintout() + "  Connection from", client_address, ":", port)
 
             # Receive the data in small chunks and retransmit it
             while True:
@@ -26,7 +27,7 @@ class Server:
                 if len(data) != 0:
                     message = Segment.unpack(data)
                     #message.print()
-                    print('Received: ' + str(data))
+                    print(message.time() + '  Received: ' + message.printout())
 
                     token = message.id
                     numberA = int(message.numberA)
@@ -90,7 +91,7 @@ class Server:
                         else:
                             connection.sendall(Segment(OPERATION.factorial, True, token, time.time(), 0, 0, result).pack())
                     else:
-                        print('Error occured: Wizard must be stopped!')
+                        print(timePrintout() + "  Error occured: Wizard must be stopped!")
 
                     # break
 
@@ -99,14 +100,14 @@ class Server:
             connection.close()
 
     def start(self):
-        print("Server is starting!")
+        print(timePrintout() + "  Server is starting!")
 
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
         server_address = (self.addr, 8000)
-        print('Starting up on %s port %s' % server_address)
+        print(timePrintout() + "  Starting up on %s port %s" % server_address)
         sock.bind(server_address)
 
         # Listen for incoming connections
@@ -115,6 +116,6 @@ class Server:
 
         while True:
             # Wait for a connection
-            print('Waiting for a connection')
+            print(timePrintout() + "  Waiting for a connection")
             connection, (client_address, port) = sock.accept()
             _thread.start_new_thread(self.newClient, (connection, client_address, port))
