@@ -1,37 +1,37 @@
+import math
+
 def addition(number1, number2):
     number1 += number2
-    return number1
+    return round(number1, 4)
 
 def subtraction(number1, number2):
     number1 -= number2
-    return number1
+    return round(number1, 4)
 
 def multiplication(number1, number2):
     number1 = number1*number2
-    return number1
+    return round(number1, 4)
 
 def division(number1, number2):
     number1 = number1/number2
-    return number1
+    return round(number1, 4)
 
 def exponentiation(number1, number2):
     number1 = number1**number2
-    return number1
+    return round(number1, 4)
 
 def negation(number1):
     number1 = 0-number1
-    return number1
+    return round(number1, 4)
 
 def root(number1, number2):
     number1 = number1**(1/number2)
-    return number1
+    return round(number1, 4)
 
 def combination(number1, number2):
-    number1 = factorial(number1)/(factorial(number2)*factorial(number1-number2))
-    return number1
+    number1 = factorial(int(round(number1)))/(factorial(int(round(number2)))*factorial(int(round(number1-number2))))
+    return round(number1, 4)
 
 def factorial(number1):
-    if number1 == 0:
-        return 1
-    else:
-        return number1 * factorial(number1-1)
+    number1 = math.factorial(int(round(number1)))
+    return round(number1, 4)
