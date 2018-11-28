@@ -27,14 +27,14 @@ OPERATION TYPE  |  Status  |  ID token  |  Timestamp  |   NumberA   |   NumberB 
 
 OPERATION TYPES (ex. if #1:O=1, then operation between numberA and numberB is addition):
 <ul>
-    <li>addition = 1</li>
-    <li>substraction = 2</li>
-    <li>multiplication = 3</li>
-    <li>division = 4</li>
-    <li>exponentation = 5</li>
-    <li>negation = 6</li>
-    <li>root = 7</li>
-    <li>combination = 8</li>
-    <li>factorial = 9</li>
+    <li>addition</li>
+    <li>substraction</li>
+    <li>multiplication</li>
+    <li>division</li>
+    <li>exponentation</li>
+    <li>negation</li>
+    <li>root</li>
+    <li>combination</li>
+    <li>factorial</li>
 
 </ul>
