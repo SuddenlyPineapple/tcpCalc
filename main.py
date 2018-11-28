@@ -5,23 +5,22 @@ import argparse
 
 
 def menu(addr):
-    loop = 1
-    start = 0
-    while loop == 1:
-        start = input("Choose working mode (Server-1, User-2, Exit-0):")
-        if start == 1:
-            serv = Server(addr)
-            serv.start()
-            loop = 0
-        elif start == 2:
-            cli = Client(addr)
-            cli.start()
-            loop = 0
-        elif start == 0:
-            loop = 0
-        else:
+    while True:
+        try:
+            start = int(input("Choose working mode (Server-1, User-2, Exit-0):"))
+            assert (start <= 2 or start >= 0), 'Number must be in int range'
+            if start == 1:
+                serv = Server(addr)
+                serv.start()
+                break
+            elif start == 2:
+                cli = Client(addr)
+                cli.start()
+                break
+            else:
+                break
+        except:
             print("Wrong choice. Choose again (type 1 for \"Server\" or 2 for \"User\" or 0 for Exit)")
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--addr", default="localhost", help="valid ip address for working")
