@@ -29,7 +29,7 @@ def root(number1, number2):
     return round(number1, 4)
 
 def combination(number1, number2):
-    number1 = factorial(int(round(number1)))/(factorial(int(round(number2)))*factorial(int(round(number1-number2))))
+    number1 = factorial(abs(int(round(number1))))/(factorial(abs(int(round(number2))))*factorial(abs(int(round(number1-number2)))))
     return round(number1, 4)
 
 def factorial(number1):
