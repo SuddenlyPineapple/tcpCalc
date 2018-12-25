@@ -4,7 +4,7 @@
 Note: Application default needs Python3.6 to work properly as it was testet at this version
 
 To run as server: `python main.py -a server_ip -S` <br>
-To run as client: `python main.py -a server_ip -S`
+To run as client: `python main.py -a server_ip -C`
 
 If address and mode are not supplied, the default values are `127.0.0.1`(localhost) and application ask about working mode.
 
